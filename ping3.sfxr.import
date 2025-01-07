@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://bkg22wvarihra"
+path="res://.godot/imported/ping3.sfxr-fa5e05ebc4d9c529e34b98b337301a1e.sample"
+
+[deps]
+
+source_file="res://ping3.sfxr"
+dest_files=["res://.godot/imported/ping3.sfxr-fa5e05ebc4d9c529e34b98b337301a1e.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

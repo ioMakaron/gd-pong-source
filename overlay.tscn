@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg80f4qigo0ou"]
+
+[ext_resource type="Script" path="res://overlay.gd" id="1_siq5o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5m4hp"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_tpx78"]
+font_size = 86
+font_color = Color(0.00392157, 0.635294, 0.72549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_osox2"]
+font_size = 86
+
+[sub_resource type="LabelSettings" id="LabelSettings_iamq5"]
+font_size = 86
+font_color = Color(1, 0.176471, 0.411765, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_siq5o")
+
+[node name="Stats" type="Label" parent="Overlay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fps:"
+label_settings = SubResource("LabelSettings_5m4hp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_right = 76.5
+offset_bottom = 118.0
+grow_horizontal = 2
+
+[node name="player_score" type="Label" parent="Overlay/HBoxContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_tpx78")
+
+[node name="separator" type="Label" parent="Overlay/HBoxContainer"]
+layout_mode = 2
+text = "|"
+label_settings = SubResource("LabelSettings_osox2")
+
+[node name="enemy_score" type="Label" parent="Overlay/HBoxContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_iamq5")

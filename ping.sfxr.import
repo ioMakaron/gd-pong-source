@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://cjpum7hl01y1c"
+path="res://.godot/imported/ping.sfxr-ad81b31f58b7fd1f66c932e76c825874.sample"
+
+[deps]
+
+source_file="res://ping.sfxr"
+dest_files=["res://.godot/imported/ping.sfxr-ad81b31f58b7fd1f66c932e76c825874.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

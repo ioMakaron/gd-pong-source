@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd1a4ysjb8h0p"]
+
+[ext_resource type="PackedScene" uid="uid://br5454coqck8m" path="res://obj_player.tscn" id="1_aj7lx"]
+[ext_resource type="Script" path="res://world.gd" id="1_ixk6n"]
+[ext_resource type="PackedScene" uid="uid://dqvj6w7oarhc0" path="res://obj_ball.tscn" id="2_ayhye"]
+[ext_resource type="PackedScene" uid="uid://dg80f4qigo0ou" path="res://overlay.tscn" id="4_3846x"]
+[ext_resource type="PackedScene" uid="uid://xp3jfasw5mb7" path="res://obj_enemy.tscn" id="5_xuh8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep16u"]
+size = Vector2(942, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upucy"]
+size = Vector2(20, 501)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23hw1"]
+size = Vector2(13, 589)
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_ixk6n")
+
+[node name="objPlayer" parent="." instance=ExtResource("1_aj7lx")]
+position = Vector2(50, 216)
+
+[node name="objBall" parent="." instance=ExtResource("2_ayhye")]
+position = Vector2(407, 170)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(427, 240)
+
+[node name="worldBorder" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldBorder"]
+position = Vector2(461, -5)
+shape = SubResource("RectangleShape2D_ep16u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="worldBorder"]
+position = Vector2(461, 485)
+shape = SubResource("RectangleShape2D_ep16u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="worldBorder"]
+position = Vector2(-10, 240.5)
+shape = SubResource("RectangleShape2D_upucy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="worldBorder"]
+position = Vector2(863, 240.5)
+shape = SubResource("RectangleShape2D_upucy")
+
+[node name="PlayerSide" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSide"]
+position = Vector2(-3.5, 284.5)
+shape = SubResource("RectangleShape2D_23hw1")
+
+[node name="EnemySide" type="Area2D" parent="."]
+position = Vector2(861, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySide"]
+position = Vector2(-3.5, 284.5)
+shape = SubResource("RectangleShape2D_23hw1")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_3846x")]
+
+[node name="objEnemy" parent="." instance=ExtResource("5_xuh8b")]
+position = Vector2(813, 225)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.0859838, 0.0859838, 0.0859838, 1)
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -263.0
+offset_top = -23.0
+offset_right = 1205.0
+offset_bottom = 506.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="body_entered" from="PlayerSide" to="." method="_on_player_side_body_entered"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqvj6w7oarhc0"]
+
+[ext_resource type="Script" path="res://obj_ball.gd" id="1_vvmsr"]
+[ext_resource type="AudioStream" uid="uid://cjpum7hl01y1c" path="res://ping.sfxr" id="2_a7b78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqjwh"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_he1pe"]
+size = Vector2(39.0625, 0.976563)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k38j"]
+size = Vector2(1, 40)
+
+[node name="objBall" type="CharacterBody2D"]
+script = ExtResource("1_vvmsr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tqjwh")
+
+[node name="AreaUP" type="Area2D" parent="."]
+scale = Vector2(1.024, 1.024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaUP"]
+position = Vector2(0, -20.0195)
+shape = SubResource("RectangleShape2D_he1pe")
+
+[node name="AreaDown" type="Area2D" parent="."]
+position = Vector2(0, 41)
+scale = Vector2(1.024, 1.024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDown"]
+position = Vector2(0, -20.0195)
+shape = SubResource("RectangleShape2D_he1pe")
+
+[node name="AreaLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLeft"]
+position = Vector2(-20.5, 0)
+shape = SubResource("RectangleShape2D_7k38j")
+
+[node name="AreaRight" type="Area2D" parent="."]
+position = Vector2(41, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaRight"]
+position = Vector2(-20.5, 0)
+shape = SubResource("RectangleShape2D_7k38j")
+
+[node name="FX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_a7b78")
+
+[connection signal="body_entered" from="AreaUP" to="." method="_on_area_up_body_entered"]
+[connection signal="body_entered" from="AreaDown" to="." method="_on_area_down_body_entered"]
+[connection signal="area_entered" from="AreaLeft" to="." method="_on_area_left_area_entered"]
+[connection signal="body_entered" from="AreaLeft" to="." method="_on_area_left_body_entered"]
+[connection signal="area_entered" from="AreaRight" to="." method="_on_area_right_area_entered"]
+[connection signal="body_entered" from="AreaRight" to="." method="_on_area_right_body_entered"]
